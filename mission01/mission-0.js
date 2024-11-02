@@ -7,8 +7,9 @@ function getValueAtObject(obj, key) {
     const result = obj[key];
     return result;
   } else {
-    console.error("올바른 키 값을 입력하세요.");
-    return;
+    // 에러 생성 후 반환
+    const error = new Error("올바른 키 값을 입력하세요");
+    return error;
   }
 }
 
@@ -21,7 +22,8 @@ function getNumberAtArray(arr, index) {
     const result = arr[index];
     return result;
   } else {
-    console.error("올바른 인덱스 값을 입력하세요");
-    return;
+    // 에러 생성 후 반환
+    const error = new Error("올바른 인덱스 값을 입력하세요");
+    return error;
   }
 }
