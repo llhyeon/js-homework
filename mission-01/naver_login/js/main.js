@@ -86,7 +86,6 @@ function handleLogin(e) {
     userInputPw.value = "";
     userInputId.focus();
   }
-  console.log(isPwValid);
 }
 
 // 가져온 input에 이벤트 바인딩
