@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "live-server --host=localhost --no-browser"
+    "dev": "live-server --host=localhost"
   },
   "devDependencies": {
     "live-server": "^1.2.2"
