@@ -4,8 +4,10 @@ const user = {
 };
 
 // 로그인 벨리데이션 상태 기본값 false로 설정
-let isIdValid = false;
-let isPwValid = true;
+const validation = {
+  isIdValid: false,
+  isPwValid: false,
+};
 
 // 상수 값으로 id, pw 구조분해 할당
 const { id: ID, pw: PW } = user;
@@ -72,6 +74,7 @@ function handleCheckPw(e) {
 function handleLogin(e) {
   e.preventDefault(); // form 기본동작 제어
 
+  let { isIdValid, isPwValid } = validation;
   if (userInputId.value === ID) isIdValid = true;
   if (userInputPw.value === PW) isPwValid = true;
 
@@ -83,6 +86,7 @@ function handleLogin(e) {
     userInputPw.value = "";
     userInputId.focus();
   }
+  console.log(isPwValid);
 }
 
 // 가져온 input에 이벤트 바인딩
