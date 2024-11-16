@@ -63,6 +63,24 @@
   }
   ```
 
+- 이메일과 패스워드의 `Validation State`를 갖고 있는 변수를 만든 후 유저가 입력한 값과 비교하여 `true` 또는 `false` 의 값을 전달하였다.(기본값은 false)
+
+  - `user` 객체를 미리 구조분해할당하여 ID, PW 변수를 사용하였다.
+
+  ```js
+  const { id: ID, pw: PW } = user;
+  ```
+
+  ```js
+  let isIdValid = false;
+  let isPwValid = true;
+  ```
+
+  ```js
+  if (userInputId.value === ID) isIdValid = true;
+  if (userInputPw.value === PW) isPwValid = true;
+  ```
+
 <!-- - 미리 만들어 둔 `getUserData` 함수를 사용해 해당 클래스의 DOM Element를 가져왔다.
 
   ```js
