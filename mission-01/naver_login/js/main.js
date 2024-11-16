@@ -5,7 +5,7 @@ const user = {
 
 // 로그인 벨리데이션 상태 기본값 false로 설정
 let isIdValid = false;
-let idPwValid = true;
+let isPwVaild = true;
 
 // 상수 값으로 id, pw 구조분해 할당
 const { id: ID, pw: PW } = user;
@@ -73,9 +73,9 @@ function handleLogin(e) {
   e.preventDefault(); // form 기본동작 제어
 
   if (userInputId.value === ID) isIdValid = true;
-  if (userInputPw.value === PW) idPwValid = true;
+  if (userInputPw.value === PW) isPwVaild = true;
 
-  if (isIdValid && idPwValid) {
+  if (isIdValid && isPwVaild) {
     window.location.href = "welcome.html";
   } else {
     alert("올바르지 않은 유저 정보입니다.");
