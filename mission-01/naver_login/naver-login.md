@@ -47,6 +47,34 @@
   }
   ```
 
+- 전체 코드는 아래와 같다.
+
+  ```js
+  // email 체크 핸들러 함수
+  function handleCheckEmail(e) {
+    const userInputData = e.currentTarget.value;
+    const validation = emailReg(userInputData);
+
+    if (!validation) {
+      e.currentTarget.classList.add("is--invalid");
+    } else {
+      e.currentTarget.classList.remove("is--invalid");
+    }
+  }
+
+  // password 체크 핸들러 함수
+  function handleCheckPw(e) {
+    const userInputData = e.currentTarget.value;
+    const validation = pwReg(userInputData);
+
+    if (!validation) {
+      e.currentTarget.classList.add("is--invalid");
+    } else {
+      e.currentTarget.classList.remove("is--invalid");
+    }
+  }
+  ```
+
 ## 로그인 핸들링 함수
 
 - 마찬가지로 이벤트 객체를 인자로 받는 `handleLogin(e) {}` 함수를 만들어 사용하였다.
@@ -79,11 +107,13 @@
   ```
 
   ```js
+  let { isIdValid, isPwValid } = validation;
+
   if (userInputId.value === ID) isIdValid = true;
   if (userInputPw.value === PW) isPwValid = true;
   ```
 
-- `Validation State` 값이 모두 `true` 이면 페이지 이동을 할 수 있게 설정하였고, 둘 중 하나라도 `false` 상태라면 `alert` 창을 통해 유저에게 invalid한 값임을 알려주고 다시 아이디 입력창에 포커스가 가게 설정하였다.
+- `Validation State` 값이 모두 `true` 이면 페이지 이동을 할 수 있게 설정하였고, 둘 중 하나라도 `false` 상태라면 `alert` 창을 통해 유저에게 invalid한 값임을 알려주고 `focus` 함수를 통해 다시 아이디 입력창에 포커스가 되도록하였다.
   ```js
   if (isIdValid && isPwValid) {
     window.location.href = "welcome.html";
@@ -94,10 +124,38 @@
     userInputId.focus();
   }
   ```
+- 전체 코드는 아래와 같다.
+
+  ```js
+  function handleLogin(e) {
+    e.preventDefault(); // form 기본동작 제어
+
+    let { isIdValid, isPwValid } = validation;
+    if (userInputId.value === ID) isIdValid = true;
+    if (userInputPw.value === PW) isPwValid = true;
+
+    if (isIdValid && isPwValid) {
+      window.location.href = "welcome.html";
+    } else {
+      alert("올바르지 않은 유저 정보입니다.");
+      userInputId.value = "";
+      userInputPw.value = "";
+      userInputId.focus();
+    }
+  }
+  ```
 
 ## 이벤트 바인딩
 
 - 위에 만들어 놓은 함수들을 각각의 엘리먼트 요소에 `addEventListener` 메서드를 통해 바인딩하였다.
+
+  - 미리 만들어 둔 `getUserData` 함수를 사용해 해당 클래스의 DOM Element를 가져왔다. `getUserData` 함수는 `className`을 파라미터로 받는다.
+
+    ```js
+    function getUserData(className) {
+      return document.querySelector(className);
+    }
+    ```
 
   ```js
   const userInputId = getUserData(".user-email-input");
@@ -111,37 +169,13 @@
 
 ## 과제 회고
 
-- 과제를 진행하며 가장 크게 느꼈던 부분은 `함수를 기능별로 작게 분리하는 것은 생각보다 쉽지 않다` 였다.
+1. 과제를 진행하며 가장 크게 느꼈던 부분은 `함수를 기능별로 작게 분리하는 것은 생각보다 쉽지 않다` 였다.
 
-  - 함수의 기능을 어디까지로 설정할지
-  - 함수를 나눴을 때의 리턴값과 인자값 처리
+   - **_함수의 기능을 어디까지로 설정할지_**
+   - **_함수를 나눴을 때의 리턴값과 인자값 처리_**
 
-  에 대한 부분이 아직 스스로 명확히 세워지지 않았음을 많이 느꼈다.
+   에 대한 부분이 아직 스스로 명확히 세워지지 않았음을 많이 느꼈다.
 
-### 해결하지 못 한 부분
+### 과제 파일 링크
 
-1. 원래는 `Validation State` 를 관리할 때 **객체**를 사용하여 관리하려고 했다
-
-   ```js
-   const validation = {
-     isIdValid: false,
-     isPwValid: false,
-   };
-   ```
-
-   하지만 이렇게 진행했을 경우
-
-   ```js
-   if (userInputId.value === ID) validation.isIdValid = true;
-   if (userInputPw.value === PW) validation.isPwValid = true;
-   ```
-
-<!-- - 미리 만들어 둔 `getUserData` 함수를 사용해 해당 클래스의 DOM Element를 가져왔다.
-
-```js
-function getUserData(className) {
-return document.querySelector(className);
-}
-````
-
-- -->
+[네이버 로그인 구현 과제 JS 파일링크](./js/main.js)
