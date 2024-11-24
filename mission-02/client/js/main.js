@@ -9,8 +9,8 @@ function getNode(node, context = document) {
 }
 
 /* ----------------------------- 배경 색상 변경 함수 생성 ----------------------------- */
-function setBgColor(colorA, colorB = "#000") {
-  document.body.style.background = `linear-gradient(to bottom, ${colorA}, ${colorB})`;
+function setBgColorToGradient(colorA, colorB = "#000", direction = "to bottom") {
+  document.body.style.background = `linear-gradient(${direction}, ${colorA}, ${colorB})`;
 }
 
 /* ----------------------------- 메인 이미지 변경 함수 생성 ---------------------------- */
@@ -57,7 +57,7 @@ function handleClick(e) {
   const index = target.dataset.index - 1;
   const colorTop = data[index].color[0];
   const colorBottom = data[index].color[1];
-  setBgColor(colorTop, colorBottom);
+  setBgColorToGradient(colorTop, colorBottom);
 
   const src = `./assets/${data[index].name}.jpeg`;
   const alt = data[index].alt;
