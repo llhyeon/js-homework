@@ -11,6 +11,7 @@
 1. [각 기능별 함수 만들기](#각-기능별-함수-만들기)
 2. [이벤트 핸들러 만들기](#이벤트-핸들러-만들기)
 3. [해결하지 못 한 부분](#해결하지-하지-못-한-부분)
+4. [과제 관련 링크](#과제관련-링크)
 
 ## 각 기능별 함수 만들기
 
@@ -120,7 +121,7 @@ function handleClick(e) {
   setBgColorToGradient(colorTop, colorBottom);
 
   const dataObj = {
-    src: `./assets/${data[index].name}.jpeg`,
+    src: `./assets/${data[index].name.toLowerCase()}.jpeg`,
     alt: data[index].alt,
   };
 
@@ -159,3 +160,10 @@ nav.addEventListener("click", handleClick);
    <img src="./client/assets/404NotFoundError.gif">
 
 2. audio 인스턴스를 생성 후 이미지를 클릭했을 때 소리가 나지만 소리가 끝나기 전에 다른 이미지를 클릭했을 때 오디오가 겹치는 문제
+
+3. 이미지를 최초 클릭 시 로드되는데 딜레이가 발생
+
+## 과제관련 링크
+
+[JS 파일 링크](./client/js/main.js)  
+[과제 구현 페이지](https://llhyeon.github.io/js-homework/mission-02/client/index.html)
