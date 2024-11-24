@@ -64,6 +64,8 @@ function handleClick(e) {
     alt: data[index].alt,
   };
 
+  console.log(dataObj);
+
   setImage(".visual img", dataObj);
 
   const textContent = data[index].name;
