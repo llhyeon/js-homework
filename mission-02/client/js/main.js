@@ -25,7 +25,7 @@ function setImage(node, dataObj) {
 
 /* ---------------------------- 텍스트 컨텐츠 변경 함수 생성 ---------------------------- */
 function setNameText(node, text) {
-  if (typeof text !== "string") throw new Error("text의 인자 값으로는 문자열만 가능합니다.");
+  if (typeof text !== "string" || text !== "") throw new Error(`${text}는 유효한 값이 아닙니다.`);
   if (typeof node === "string") node = getNode(node);
   node.textContent = text;
 }
