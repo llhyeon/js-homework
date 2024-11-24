@@ -25,7 +25,7 @@ function setImage(node, dataObj) {
 
 /* ---------------------------- 텍스트 컨텐츠 변경 함수 생성 ---------------------------- */
 function setNameText(node, text) {
-  if (typeof text !== "string" || text !== "") throw new Error(`${text}는 유효한 값이 아닙니다.`);
+  if (typeof text !== "string" || text === "") throw new Error(`${text}는 유효한 값이 아닙니다.`);
   if (typeof node === "string") node = getNode(node);
   node.textContent = text;
 }
@@ -59,9 +59,12 @@ function handleClick(e) {
   const colorBottom = data[index].color[1];
   setBgColorToGradient(colorTop, colorBottom);
 
-  const src = `./assets/${data[index].name}.jpeg`;
-  const alt = data[index].alt;
-  setImage(".visual img", { src, alt });
+  const dataObj = {
+    src: `./assets/${data[index].name}.jpeg`,
+    alt: data[index].alt,
+  };
+
+  setImage(".visual img", dataObj);
 
   const textContent = data[index].name;
   setNameText("h1", textContent);
