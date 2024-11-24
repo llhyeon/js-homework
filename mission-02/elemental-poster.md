@@ -10,6 +10,7 @@
 
 1. [각 기능별 함수 만들기](#각-기능별-함수-만들기)
 2. [이벤트 핸들러 만들기](#이벤트-핸들러-만들기)
+3. [해결하지 못 한 부분](#해결하지-하지-못-한-부분)
 
 ## 각 기능별 함수 만들기
 
@@ -149,3 +150,12 @@ nav.addEventListener("click", handleClick);
 - 기본적으로 들어가 있는 `is-active` 클래스를 제거하기 위해 `removeAllClass` 함수를 사용했으며, 첫 번째 인자값으로 `[this.children]` 를 넘겨주었다.
   - > 이벤트를 위임해주었기에 click 이벤트가 발생하는 `nav`(`nav > ul`) 가 `this` 를 호출한 요소가 된다. 따라서 `ul` 태그의 자식요소인 `li` 요소들이 `this.children` 에 담기게 된다.
 - 이후 `addClass` 함수의 인자값으로 위에 선언한 `target` 을 넘겨주었다.
+- `audioSrc` 변수에 미리 준비되어 있는 audio 파일 경로를 할당하여 `startAudio` 함수 값에 아규먼트로 넘겨주었다.
+  - > 파일 이름이 소문자로 되어있어 `toLowerCase()` 메서드를 사용하였다.
+
+## 해결하지 하지 못 한 부분
+
+1. audio 인스턴스를 생성했을 경우 favicon 관련하여 `404 Not Found` 에러가 발생하였다.
+   <img src="./client/assets/404NotFoundError.gif">
+
+2. audio 인스턴스를 생성 후 이미지를 클릭했을 때 소리가 나지만 소리가 끝나기 전에 다른 이미지를 클릭했을 때 오디오가 겹치는 문제
