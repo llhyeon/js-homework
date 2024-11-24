@@ -60,7 +60,7 @@ function handleClick(e) {
   setBgColorToGradient(colorTop, colorBottom);
 
   const dataObj = {
-    src: `./assets/${data[index].name}.jpeg`,
+    src: `./assets/${data[index].name.toLowerCase()}.jpeg`,
     alt: data[index].alt,
   };
 
